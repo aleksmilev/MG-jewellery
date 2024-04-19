@@ -1,0 +1,19 @@
+<div id="recomended_items">
+    <h1 *ngIf="admin != true">ПРЕПОРЪЧВАМЕ ВИ</h1>
+    <h1 *ngIf="admin == true">НАЙ-ПРОДАВАНИ АРТИКУЛИ</h1>
+
+    <div class="product_conteiner my-3">
+        <div *ngFor="let product of $items | async" class="pointer product">
+            <div [routerLink]="'/product/' + product.id">
+                <img [src]="'http://localhost/assets/product' + product.cover_path" alt="">
+                <p class="product_name">{{product.name}}</p>
+                <p class="product_price">{{product.price}} BGN</p>
+                <div class="product_view" *ngIf="admin != true">VIEW</div>              
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center my-3" *ngIf="admin != true">
+        <button class="primary-button" style="width: 20vw;" routerLink="/products/1/gender:&max_price:&min_price:&categorie:">Вижте всички</button>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div id="container" class="my-5 py-5">
+    <p class="mb-3">Форма за контакти</p>
+
+    <div [ngClass]="incorrect ? 'd-flex justify-center':'d-none'">
+        <span class="incorrect w-100 text-center mb-2">Моля, въведете правилен имейл или име </span>
+    </div>
+
+    <div [ngClass]="success ? 'd-flex justify-center':'d-none'">
+        <span class="success w-100 text-center mb-2">Благодарим Ви за обратната връзка.</span>
+    </div>
+
+    <form>
+        <div class="d-flex gap-3">
+            <div>
+                <label for="name" [ngClass]="incorrect ? 'incorrect':''">Име</label>
+                <input id="name" name="name" type="text" [(ngModel)]="form.first_name">
+            </div>
+
+            <div>
+                <label for="name" [ngClass]="incorrect ? 'incorrect':''">Фамилия</label>
+                <input id="name" name="name" type="text" [(ngModel)]="form.last_name">
+            </div>
+        </div>
+
+        <div>
+            <label for="name" [ngClass]="incorrect ? 'incorrect':''">имейл</label>
+            <input id="name" name="name" type="email" [(ngModel)]="form.email">
+        </div>
+
+        <div>
+            <label for="name" [ngClass]="incorrect ? 'incorrect':''">съобщение</label>
+            <textarea id="name" name="name" type="text" cols="30" rows="10" [(ngModel)]="form.message"></textarea>
+        </div>        
+        
+        <input class="primary-button" type="button" value="Изпратете" (click)="submit_login()">
+
+    </form>
+</div>
+
+<form>
+    <input type="text">
+</form>

@@ -1,0 +1,72 @@
+.w-400{
+    max-width: 400px;
+}
+
+.active, .not-active{
+    padding: 3px 0px;
+    margin-bottom: 25px;
+    width: 100%;
+
+    text-align: center;
+    font-size: 1.1em;
+} 
+.active{
+    color: 	#013220;
+    background-color: rgba(0, 128, 0, 0.25);
+
+    border: 1px solid green;
+}
+.not-active{
+    color: #8B0000;
+    background-color: rgba(255, 0, 0, 0.25);
+
+    border: 1px solid red;
+}
+
+p{
+    text-transform: uppercase;
+
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    line-height: 1.4;
+    letter-spacing: .3em;
+
+    color: var(--text-color-light);
+}
+
+form > div:not(:last-child){
+    border-bottom: calc(var(--bs-border-width) * 2) var(--bs-border-style) var(--bs-border-color);
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+}
+
+label{
+    font-size: .8em;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #000;
+
+    margin-bottom: 7px;
+}
+input, select{
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    margin-bottom: 20px;
+    border: 1px solid #999;
+
+    width: 100%;
+    padding: 8px 10px;
+}
+img{
+    position: absolute;
+
+    top: 50%;
+    right: 3%;
+
+    transform: translateY(-33.33%);
+}

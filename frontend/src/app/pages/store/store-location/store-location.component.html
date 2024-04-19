@@ -1,0 +1,8 @@
+<div id="container">
+    <div *ngFor="let store of store_list$ | async">
+        <img [src]="'http://localhost' + store.image_path" alt="" style="height: 300px;">
+        <p class="mb-0 title">МАГАЗИН {{ store.name }}</p>
+        <p class="mb-0">{{ store.location_text }}</p>
+        <a class="mb-0 underline-animation" [href]="store.location_map" target="_blank">{{ store.name }} на картата</a>
+    </div>
+</div>

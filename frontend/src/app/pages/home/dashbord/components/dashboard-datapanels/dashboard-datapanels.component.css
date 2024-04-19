@@ -1,0 +1,31 @@
+#datapanels{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+#datapanels > div{
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5em;
+    padding: 1.5em 1em;
+
+    position: relative;
+
+    overflow: hidden;
+}
+#datapanels > div > h1{ 
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+#datapanels > div > img{
+    position: absolute;
+    bottom: -2em;
+    right: 0em;
+
+    filter: brightness(0) saturate(100%) invert(15%) sepia(99%) saturate(308%) hue-rotate(194deg) opacity(0.75);
+    z-index: -1;
+
+    width: 9em;
+    height: 9em;
+}

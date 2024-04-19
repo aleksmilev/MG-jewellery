@@ -1,0 +1,33 @@
+<div id="account_container">
+    <div>
+        <p class="my_account">Администраторски акаунт</p>
+
+        <div class="details">
+            <a routerLink="/profile/user/personal_info" [ngClass]="{'selected_tab': selected_tab === 'personal_info'}">
+                <img src="/assets/icons/profile.svg" alt="" style="width: 30px;">
+                <p>моите данни</p>
+            </a>
+            <a routerLink="/dashboard">
+                <img src="/assets/icons/wrench.svg" alt="" style="width: 30px;">
+                <p>Потребителско табло</p>
+            </a>
+            <a routerLink="/profile/user/users" [ngClass]="{'selected_tab': selected_tab === 'users'}">
+                <img src="/assets/icons/profiles-group.svg" alt="" style="width: 30px;">
+                <p>всички потребители</p>
+            </a>
+            <a routerLink="/profile/user/new_users" [ngClass]="{'selected_tab': selected_tab === 'new_users'}">
+                <img src="/assets/icons/add-user.svg" alt="" style="width: 30px;">
+                <p>нов потребител</p>
+            </a>
+            <a (click)="logout()">
+                <img src="/assets/icons/exit.svg" alt="" style="width: 30px;">
+                <p>изход</p>
+            </a>
+        </div>
+    </div>
+    <div>
+        <app-user-personal-info *ngIf="selected_tab === 'personal_info'"></app-user-personal-info>
+        <app-view-users *ngIf="selected_tab === 'users'"></app-view-users>
+        <app-new-user *ngIf="selected_tab === 'new_users'"></app-new-user>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+select{
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 400;
+    
+    margin-bottom: 20px;
+    border: 1px solid #999;
+
+    width: 60%;    
+    padding: 8px 10px;
+}

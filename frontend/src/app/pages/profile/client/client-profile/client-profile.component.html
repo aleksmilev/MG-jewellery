@@ -1,0 +1,29 @@
+<div id="account_container">
+    <div>
+        <p class="my_account">Моят акаунт</p>
+
+        <div class="details">
+            <a routerLink="/profile/info/personal_info" [ngClass]="{'selected_tab': selected_tab === 'personal_info'}">
+                <img src="/assets/icons/profile.svg" alt="" style="width: 30px;">
+                <p>моите данни</p>
+            </a>
+            <a routerLink="/profile/info/address" [ngClass]="{'selected_tab': selected_tab === 'address'}">
+                <img src="/assets/icons/location.svg" alt="" style="width: 30px;">
+                <p>адресни данни</p>
+            </a>
+            <a routerLink="/profile/info/orders" [ngClass]="{'selected_tab': selected_tab === 'orders'}">
+                <img src="/assets/icons/package.svg" alt="" style="width: 30px;">
+                <p>моите поръчки</p>
+            </a>
+            <a (click)="logout()">
+                <img src="/assets/icons/exit.svg" alt="" style="width: 30px;">
+                <p>изход</p>
+            </a>
+        </div>
+    </div>
+    <div>
+        <app-client-personal-info *ngIf="selected_tab === 'personal_info'"></app-client-personal-info>
+        <app-client-address *ngIf="selected_tab === 'address'"></app-client-address>
+        <app-client-orders *ngIf="selected_tab === 'orders'"></app-client-orders>
+    </div>
+</div>

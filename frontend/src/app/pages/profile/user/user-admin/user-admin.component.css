@@ -1,0 +1,65 @@
+#account_container{
+    display: grid;
+    grid-template-columns: 30% auto;
+    gap: 5%;
+
+    width: 80%;
+    margin: 40px auto;
+}
+#account_container > div:first-child{
+    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}
+
+.my_account{
+    text-transform: uppercase;
+
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    line-height: 1.4;
+
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+.selected_tab p{
+    color: var(--text-color-light) !important; 
+}
+
+.details{
+    margin-left: 40px;
+}
+.details *{
+    transition: 0.5s;
+
+    text-decoration: none;
+    color: #999;
+
+    margin: 0px;
+}
+.details *:hover{
+    transition: 0.5s;
+    color: #000; 
+
+    cursor: pointer;
+}
+.details > a{
+    display: flex;
+    align-self: center;
+    gap: 15px;
+
+    margin: 15px;
+
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.details > a:last-child{
+    margin-bottom: 0px !important;
+}
+
+.details > a > p{
+    display: flex;
+    align-items: center;
+}

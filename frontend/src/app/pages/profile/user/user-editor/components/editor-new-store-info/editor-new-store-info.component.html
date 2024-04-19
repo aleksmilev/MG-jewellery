@@ -1,0 +1,53 @@
+<form>
+    <p class="page_title mb-3">нова информация за магазина</p>
+
+    <div class="instructions shadow rounded px-4 py-2 my-4 mb-5">
+        <div [class]="hide_ins? 'd-flex justify-content-between align-items-center pt-1 mb-2' : 'd-flex justify-content-between align-items-center pt-1 mb-4'">
+            <h2>Инструкции:</h2>
+
+            <img [classList]="hide_ins? 'rotate' : 'return'" src="/assets/icons/close.svg" style="height: calc(0.9 * 32px);" class="pointer" (click)="hide_ins = !hide_ins">
+        </div>
+
+        <div [class]="hide_ins? 'd-none': 'd-flex flex-column gap-3 commands'">
+            <div class="d-flex align-items-center gap-1">title(някакъв текст) => <h1>някакъв текст    </h1> (h1)</div>
+            <div class="d-flex align-items-center gap-1">title(някакъв текст, 1) => <h1>някакъв текст </h1> (h1)</div>
+            <div class="d-flex align-items-center gap-1">title(някакъв текст, 2) => <h2>някакъв текст </h2> (h2)</div>
+            <div class="d-flex align-items-center gap-1">title(някакъв текст, 3) => <h3>някакъв текст </h3> (h3)</div>
+            <div class="d-flex align-items-center gap-1">title(някакъв текст, 4) => <h4>някакъв текст </h4> (h4)</div>
+            <div class="d-flex">title(някакъв текст, 5) => <h5>някакъв текст </h5> (h5)</div>
+            <div class="d-flex">title(някакъв текст, 6) => <h6>някакъв текст </h6> (h6)</div>
+            <p>bold(някакъв текст) => <b>някакъв текст</b></p>
+            <p>link(линк към някъде, https://somelink.com) => <a href="https://somelink.com">линк към някъде</a></p>
+            <div class="d-flex">ordered_list(някакъв текст, някакъв текст, някакъв текст) => <ol class="mx-4"><li>някакъв текст</li><li>някакъв текст</li><li>някакъв текст</li></ol></div>
+            <div class="d-flex">unordered_list(някакъв текст, някакъв текст, някакъв текст) => <ul class="mx-4"><li>някакъв текст</li><li>някакъв текст</li><li>някакъв текст</li></ul></div>
+        </div>
+    </div>
+
+    <div [ngClass]="incorrect_inputs.length !== 0? 'd-flex flex-column my-2':'d-none'">
+        <span class="incorrect w-100 mb-2" *ngFor="let incorrect_input of incorrect_inputs">{{ incorrect_input }}</span>
+    </div>
+    <div [ngClass]="success? 'd-block my-2  ':'d-none'">
+        <span class="success w-100 mb-2">Успешно актуализирахте акаунта си!</span>
+    </div>
+
+    <div>
+        <div class="d-flex gap-3">
+            <div>
+                <label for="title" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Заглавие</label>
+                <input id="title" name="title" type="text" [(ngModel)]="form.title">
+            </div>
+
+            <div>
+                <label for="link" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Линк</label>
+                <input id="link" name="link" type="text" [(ngModel)]="form.link">
+            </div>
+        </div>
+
+        <div style="width: 550px;">
+            <label for="text" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Текст</label>
+            <textarea id="text" name="text"  cols="30" rows="10" [(ngModel)]="form.text"></textarea>
+        </div>
+    </div>
+
+    <input type="button" value="Запази" class="primary-button" (click)="save_changes()">
+</form>

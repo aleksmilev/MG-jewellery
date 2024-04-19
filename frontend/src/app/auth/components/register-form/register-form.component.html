@@ -1,0 +1,35 @@
+<div id="container" class="my-5 py-5">
+    <p class="mb-3">Създай профил</p>
+
+    <div [ngClass]="incorrect ? 'd-flex justify-center flex-column':'d-none'">
+        <span class="incorrect w-100 text-center mb-2" *ngFor="let incorrect_input of incorrect_inputs">{{ incorrect_input }}</span>
+    </div>
+
+    <form>
+        <div class="d-flex gap-3">
+            <div>
+                <label for="name" [ngClass]="incorrect ? 'incorrect':''">Име</label>
+                <input id="name" name="name" type="text" [(ngModel)]="form.first_name">
+            </div>
+
+            <div>
+                <label for="name" [ngClass]="incorrect ? 'incorrect':''">Фамилия</label>
+                <input id="name" name="name" type="text" [(ngModel)]="form.last_name">
+            </div>
+        </div>
+
+        <div>
+            <label for="name" [ngClass]="incorrect ? 'incorrect':''">имейл</label>
+            <input id="name" name="name" type="email" [(ngModel)]="form.email">
+        </div>
+        
+        <div class="position-relative">
+            <label for="password" [ngClass]="incorrect ? 'incorrect':''">Парола</label>
+            <input id="password" name="password" [type]="show_password? 'text':'password'" [(ngModel)]="form.password">
+
+            <img [src]="show_password? '/assets/icons/show-password.svg':'/assets/icons/not-show-password.svg'" alt="" style="width: 27px;" (click)="show_password = !show_password">
+        </div>
+        
+        <input class="primary-button" type="button" value="Регистрация" (click)="submit_register()">
+    </form>
+</div>

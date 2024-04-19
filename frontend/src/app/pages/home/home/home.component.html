@@ -1,0 +1,44 @@
+<div class="d-flex flex-column gap-5">
+    <div id="image-title">
+        <img src="/assets/images/image-cover.jpg" alt="">
+        <div>
+            <h1>Пресъздай себе си</h1>
+            <h3>Подготви се</h3>
+        </div>
+    </div>
+
+    <div id="genders">
+        <div class="gender_conteiner my-3">
+            <div class="pointer gender">
+                <div [routerLink]="'/products/1/gender:1&max_price:&min_price:&categorie:'">
+                    <img src="/assets/images/for_him.webp" alt="">
+                    <p class="gender_name">Jewelry For Him</p>
+                    <div class="gender_view">VIEW</div>              
+                </div>
+            </div>
+
+            <div class="pointer gender">
+                <div [routerLink]="'/products/1/gender:2&max_price:&min_price:&categorie:'">
+                    <img src="/assets/images/for_her.webp" alt="">
+                    <p class="gender_name">Jewelry For Her</p>
+                    <div class="gender_view">VIEW</div>              
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <div id="custom_products">
+        <img src="/assets/images/custom.jpeg" alt="">
+
+        <div>
+            <h1>View Our Custom Products</h1>
+            <h4>Made just for you</h4>
+            <div class="custom_view my-5">VIEW MORE</div>  
+        </div>
+    </div>
+
+    <div id="recommended">
+        <app-recommended></app-recommended>
+    </div>
+</div>

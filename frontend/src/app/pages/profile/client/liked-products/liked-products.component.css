@@ -1,0 +1,52 @@
+#container{
+    width: 70vw;
+    margin: 30px auto;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.334;
+    letter-spacing: 0em;
+    margin: 0;
+}
+
+.liked_products img{
+    width: 200px;
+    
+    border-radius: 3px;
+}
+
+.liked_products .category{
+	font-weight: 400;
+	font-size: 0.9em;
+	letter-spacing: .4em;
+	margin-bottom: -3px;
+	text-transform: uppercase;
+}
+
+.liked_products .name{
+    font-weight: 500;
+	font-size: 30px;
+	letter-spacing: 0.025em;
+	line-height: 1.4;
+	margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.liked_products .remove{
+    padding-left: 50px; 
+    padding-right: 50px;
+}
+
+.liked_products .price{
+    font-weight: 600;
+}
+
+.no-products{
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.334;
+    letter-spacing: 0em;
+    margin: 0;
+}

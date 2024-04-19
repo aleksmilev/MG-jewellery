@@ -1,0 +1,102 @@
+
+
+<div *ngIf="!edit_mode">
+    <p class="page_title">Всички потребители</p>
+
+    <div class="d-flex gap-3 flex-column">
+        
+
+        <div *ngFor="let user of $users | async" class="user border rounded p-3" [ngClass]="user.active == '0' ? 'not-active-profile' : ''">
+            <div>
+                <p *ngIf="user.active == '1'" class="mb-3 active">активен</p>
+                <p *ngIf="user.active == '0'" class="mb-3 not-active">неактивен</p>
+            </div>
+
+            <div class="details">
+                <div>
+                    <p>Име: <b>{{ user.first_name }} {{ user.last_name }}</b></p>
+                    <p>Имейл <b>{{ user.email }}</b></p>
+                    <p>Телефон: <b>{{ user.phone }}</b></p>
+
+                    <p>
+                        Роля:
+                        <b *ngIf="user.admin == '1'">Администратор</b>
+                        <b *ngIf="user.admin == '0'">Редактор</b>
+                    </p>
+                </div>
+
+                <div class="d-flex gap-4 align-items-center">
+                    <button [disabled]="user.active == '0'" (click)="delete_user(user)" class="danger-button">Изтриване</button>
+                    <button (click)="edit_user(user)" class="primary-button">Редактиране</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="edit_mode" class="edit">
+    <form>
+        <div>
+            <p class="page_title mb-3">Редактиране на потребител</p>
+
+            <div>
+                <p *ngIf="editing_user.active == '1'" class="active">активен</p>
+            </div>
+
+            <div [ngClass]="incorrect_inputs.length !== 0? 'd-flex flex-column my-2':'d-none'">
+                <span class="incorrect w-100 mb-2" *ngFor="let incorrect_input of incorrect_inputs">{{ incorrect_input }}</span>
+            </div>
+            <div [ngClass]="success? 'd-block my-2  ':'d-none'">
+                <span class="success w-100 mb-2">Успешно актуализирахте акаунта си!</span>
+            </div>
+
+            <div class="d-flex gap-3">
+                <div>
+                    <label for="first_name" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Име</label>
+                    <input id="first_name" name="first_name" type="text" [(ngModel)]="editing_user.first_name">
+                </div>
+
+                <div>
+                    <label for="last_name" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Фамилия</label>
+                    <input id="last_name" name="last_name" type="text" [(ngModel)]="editing_user.last_name">
+                </div>
+            </div>
+
+            <div class="w-400">
+                <label for="email" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Имейл</label>
+                <input id="email" name="email" type="email" [(ngModel)]="editing_user.email">
+            </div>
+
+            <div class="w-400">
+                <label for="phone" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Телефон</label>
+                <input id="phone" name="phone" type="text" [(ngModel)]="editing_user.phone">
+            </div>
+
+            <div class="w-400">
+                <label for="admin_access" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Роля</label>
+                <select name="admin_access" id="admin_access" [(ngModel)]="editing_user.admin">
+                    <option value="0">Редактор</option>
+                    <option value="1">Администратор</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="position-relative w-400">
+                <label for="password" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Парола</label>
+                <input id="password" name="password" [type]="show_password[0]? 'text':'password'" [(ngModel)]="new_password[0]">
+
+                <img [src]="show_password[0]? '/assets/icons/show-password.svg':'/assets/icons/not-show-password.svg'" alt="" style="width: 27px;" (click)="show_password[0] = !show_password[0]">
+            </div>
+
+            <div class="position-relative w-400">
+                <label for="password" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Потвърди парола</label>
+                <input id="password" name="password" [type]="show_password[1]? 'text':'password'" [(ngModel)]="new_password[1]">
+
+                <img [src]="show_password[1]? '/assets/icons/show-password.svg':'/assets/icons/not-show-password.svg'" alt="" style="width: 27px;" (click)="show_password[1] = !show_password[1]">
+            </div>
+
+            <br>
+            <button (click)="update_user()" class="primary-button">Актуализира</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+<br><br>
+
+<div id="container">
+    <div class="product_main">
+        <app-custom-module #custom_module [module_path]="info.module_path" [colors]="info.mesh_material" [custom_parts]="info.custom_parts"></app-custom-module>
+        <div class="product_info d-flex flex-column justify-content-between">
+            <div>
+                <p id="name">{{ info?.name }}</p>
+                <p id="id">Product № {{ info?.id }}</p>
+                <p id="price">{{ info?.price }} BGN</p>
+
+                <app-product-sizes></app-product-sizes>
+
+                <div id="customizations">
+                    <div *ngFor="let custom_part of info.custom_parts; let i = index;">
+                        <p class="mb-2">Персонализиране №{{ i + 1 }}</p>
+                        <!-- <select name="customizations" class="customizations" (change)="update_module($event, custom_part.name)">
+                            <option [value]="layer.name" *ngFor="let layer of custom_part.config; let first = first" [selected]="first">{{ layer.title }}</option>
+                        </select> -->
+                        <!-- <div  *ngFor="let layer of custom_part.config; let first = first">
+                            <input type="radio" [name]="'customization_' + (i + 1)" [id]="'customization_' + i" [value]="layer.name" (change)="update_module($event, custom_part.name)">
+                        </div> -->
+                        
+                        <div class="checkbox-group">
+                            <div class="checkbox" *ngFor="let layer of custom_part.config; let first = first">
+                                <label class="checkbox-wrapper">
+                                    <input type="radio" class="checkbox-input" [checked]="first" [name]="'customization_' + (i + 1)" [id]="'customization_' + i" [value]="layer.name" (change)="update_module($event, custom_part.name)"/>
+                                    <span class="checkbox-tile p-1" >
+                                        <app-custom-part [module_path]="info.module_path" [colors]="info.mesh_material" [custom_parts]="info.custom_parts" [selected_layer]="layer.name"></app-custom-part>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="success">
+                    <p>{{ succesfuly_added? succesfuly_added : succesfuly_added }}</p>
+                </div>
+                <button (click)="add_to_card( info?.id )" class="primary-button">Add to card</button>                    
+
+                <div class="d-flex gap-2 flex-column mb-5">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="assets/icons/phone.svg" alt="" class="icon" style="width: 27px;">
+                        <p><b>ПОРЪЧА</b> по телефона: 0888 633 077 (10:00 до 19:00 в работни дни)</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="assets/icons/bag.svg" alt="" class="icon" style="width: 27px;">
+                        <p><b>БЕЗПЛАТНА ДОСТАВКА</b> над 150лв.</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="assets/icons/package.svg" alt="" class="icon" style="width: 27px;">
+                        <p><b>ВРЪЩАНЕ</b> до 14 дни</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product_description">
+        <p id="description">{{ info?.description }}</p>
+        <img id="cover_image" [src]="'http://localhost/assets/product' + info?.cover_path" alt="">
+    </div>
+</div>
+
+<app-recommended></app-recommended>

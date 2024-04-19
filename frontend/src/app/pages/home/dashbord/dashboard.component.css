@@ -1,0 +1,26 @@
+#dashboard{
+    width: 70vw;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;    
+}
+
+#feedbacks > div{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.feedback_container{
+    display: grid;
+    grid-template-columns: 30% auto;
+    gap: 1.5em;
+}
+.feedback_container > *:first-child{
+    border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}
+
+.feedback_info > p{
+    color: var(--text-color-light);
+}

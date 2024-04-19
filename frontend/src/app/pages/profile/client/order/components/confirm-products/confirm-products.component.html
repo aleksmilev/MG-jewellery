@@ -1,0 +1,51 @@
+<div *ngIf="visible">
+    <div class="cart d-flex flex-column gap-4" *ngIf="(get_cart | async)?.length !== 0">
+        <div  *ngFor="let product of get_products_type('regular')" class="d-flex align-items-center justify-content-between">
+            <div class="d-flex gap-4">
+                <img [src]="'http://localhost/assets/product' + product.cover_path" alt="" [routerLink]="'/product/' + product.id" class="pointer">
+                <div class="d-flex justify-content-between flex-column">
+                    <div [routerLink]="'/product/' + product.id" class="pointer">
+                        <p class="category">{{ product.category_name }}</p>
+                        <p class="name">{{ product.name }}</p>
+                    </div>
+    
+                    <div class="counter d-flex align-items-center justify-content-center gap-2">
+                        <button type="button" style="font-size: 1.3em;" (click)="minus_one(product.id.toString(), 'regular')">−</button>
+                        <input type="text" disabled [value]="product.quantity" style="width: 20px; text-align: center; font-size: 1.3em;">
+                        <button type="button" style="font-size: 1.3em;" (click)="plus_one(product.id.toString(), 'regular')">+</button>
+                    </div>
+                </div>
+            </div>
+            <div [routerLink]="'/product/' + product.id" class="pointer">
+                <p style="text-align: end;">Цена</p>
+                <p class="price m-0 p-0">{{ product.price }} BGN</p>
+            </div>
+        </div>
+    </div>
+    
+    <br *ngIf="(get_cart | async)?.length !== 0 && (get_custom_cart | async)?.length !== 0">
+    
+    <div class="cart d-flex flex-column gap-4" *ngIf="(get_custom_cart | async)?.length !== 0">
+        <div  *ngFor="let product of get_products_type('custom')" class="d-flex align-items-center justify-content-between">
+            <div class="d-flex gap-4">
+                <img [src]="'http://localhost/assets/product' + product.cover_path" alt="" [routerLink]="'/product/custom/' + product.id" class="pointer">
+                <div class="d-flex justify-content-between flex-column">
+                    <div [routerLink]="'/product/custom/' + product.id" class="pointer">
+                        <p class="category">Персонализиран продукт</p>
+                        <p class="name">{{ product.name }}</p>
+                    </div>
+    
+                    <div class="counter d-flex align-items-center justify-content-center gap-2">
+                        <button type="button" style="font-size: 1.3em;" (click)="minus_one(product.id.toString(), 'custom')">−</button>
+                        <input type="text" disabled [value]="product.quantity" style="width: 20px; text-align: center; font-size: 1.3em;">
+                        <button type="button" style="font-size: 1.3em;" (click)="plus_one(product.id.toString(), 'custom')">+</button>
+                    </div>
+                </div>
+            </div>
+            <div [routerLink]="'/product/custom/' + product.id" class="pointer">
+                <p style="text-align: end;">Цена</p>
+                <p class="price m-0 p-0">{{ product.price }} BGN</p>
+            </div>
+        </div>
+    </div>
+</div>

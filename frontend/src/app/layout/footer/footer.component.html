@@ -1,0 +1,34 @@
+<footer>
+    <div id="main">
+        <section>
+            <a class="text-decoration-none w-100 d-flex justify-content-center" routerLink="/"><img src="/assets/images/logo.png" alt="" style="width: 40%;"></a>
+        </section>
+        <section id="store_info">
+            <a class="text-decoration-none" routerLink="store/info/contacts">Връзка с нас</a>
+            <a class="text-decoration-none" *ngFor="let info of $store_info | async" [routerLink]="'store/info' + info.link">{{ info.title }}</a>
+        </section>
+        <section>
+            <div id="subscribe">
+                <h4>Абонирай се</h4>
+                <p>Абонирай се, за да получаваш винаги пръв ексклузивни кодове за отстъпка и да научаваш най-новото от <b>MG jewellery</b>!</p>
+                
+                <div class="subscription_form">
+                    <p *ngIf="subscription_form.invalid" class="invalid">Невалиден имейл!</p>
+                    
+                    <input type="email" placeholder="Въведете имейл" [(ngModel)]="subscription_form.email"> 
+                    <input type="button" value="Абонирай се" (click)="subscribe()">
+                </div>
+            </div>
+
+            <!-- <div class="">
+                <img src="/assets/icons/instagram.png" alt="">
+                <img src="/assets/icons/facebook.png" alt="">
+                <img src="/assets/icons/tiktok.png" alt="">
+            </div> -->
+        </section>
+    </div>
+    <section id="copyrights">
+        <p>© <b>MG jewellery</b> 2023-{{ current_year }} Всички права запазени.</p>
+    </section>
+
+</footer>

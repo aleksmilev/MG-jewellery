@@ -1,0 +1,24 @@
+<div id="dashboard" class="my-4">
+    <app-dashboard-datapanels></app-dashboard-datapanels>
+    <app-dashboard-sales-chart></app-dashboard-sales-chart>
+
+    <div id="recommended">
+        <app-recommended [admin]="true"></app-recommended>
+    </div>
+
+    <div id="feedbacks">
+        <p class="page_title mb-3 text-center">Обратна връзка</p>
+        <div class="d-flex flex-column gap-4">
+            <div class="feedback_container" *ngFor="let feedback of $feedback | async">
+                <div class="feedback_info">
+                    <p>Име: <b>{{ feedback.first_name}} {{ feedback.last_name }}</b></p>
+                    <p>Email: <b>{{ feedback.email }}</b></p>
+                </div>
+                
+                <div class="ordered_items d-flex align-items-start flex-wrap gap-3">
+                    <p>{{ feedback.message }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

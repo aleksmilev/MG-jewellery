@@ -1,0 +1,65 @@
+<p class="page_title">Моите поръчки</p>
+
+<div class="d-flex flex-column gap-4">
+    <div class="border rounded p-3" *ngFor="let order of $orders | async">
+
+        <p [ngClass]="{
+            'in_progress': order.order_info.status === 'В процес',
+            'sent': order.order_info.status === 'Изпратена',
+            'complete': order.order_info.status === 'Завършена'
+        }">
+            {{ order.order_info.status }}
+        </p>
+
+        <div class="order_container">
+            <div class="client_info">
+                <p>Номер на поръчката: <b>{{ order.order_info.id }}</b></p>
+                <p>Име: <b>{{ order.order_info.first_name }} {{ order.order_info.last_name }}</b></p>
+                <p>Телефон: <b>{{ order.order_info.phone }}</b></p>
+                <p>Дата на поръчката: <b>{{ order.order_info.date }}</b></p>
+                <p>Обща сума: <b>{{ order.order_info.total }} BGN</b></p>
+            </div>
+            
+            <div class="ordered_items d-flex align-items-start flex-wrap gap-3">
+                <div class="item d-flex pointer" *ngFor="let item of order.ordered_items.regular" [routerLink]="'/product/' + item.id">
+                    <div class="border rounded px-4 py-2">
+                        <p class="name">{{ item.name }}</p>
+                        <p class="price">{{ item.price }} BGN</p>
+                        <p class="quantity">{{ item.quantity }} бр.</p>
+                    </div>
+                </div>
+
+                <div class="item d-flex pointer" *ngFor="let item of order.ordered_items.custom" [routerLink]="'/product/custom/' + item.id">
+                    <div class="border rounded px-4 py-2">
+                        <p class="name">{{ item.name }}</p>
+                        <p class="price">{{ item.price }} BGN</p>
+                        <p class="quantity">{{ item.quantity }} бр.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <p *ngIf="order.order_info.complete == 1" class="complete">завършена</p>
+        <p *ngIf="order.order_info.complete == 0" class="incomplete">обработва се</p>
+
+        <div class="order_container">
+            <div class="client_info">
+                <p>Номер на поръчката: <b>{{ order.order_info.id }}</b></p>
+                <p>Име: <b>{{ order.client_info.first_name }} {{ order.order_info.last_name }}</b></p>
+                <p>Телефон: <b>{{ order.order_info.phone }}</b></p>
+                <p>Дата на поръчката: <b>{{ order.order_info.date }}</b></p>
+                <p>Обща сума: <b>{{ order.order_info.total }} BGN</b></p>
+            </div>
+    
+            <div class="ordered_items d-flex align-items-start flex-wrap gap-3">
+                <div class="item d-flex pointer" *ngFor="let item of order.items" [routerLink]="'/items/id-' + item.id">
+                    <div class="border rounded px-4 py-2">
+                        <p class="name">{{ item.name }}</p>
+                        <p class="price">{{ item.price }} bgn</p>
+                        <p class="quantity">{{ item.quantity }} бр.</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

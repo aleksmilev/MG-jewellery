@@ -1,0 +1,28 @@
+<div id="container" class="my-5 py-5">
+    <p class="mb-3">Вход</p>
+
+    <div [ngClass]="incorrect_password ? 'd-flex justify-center':'d-none'">
+        <span class="incorrect w-100 text-center">Неправилен имейл или парола </span>
+    </div>
+
+    <form>
+        <div>
+            <label for="name" [ngClass]="incorrect_password ? 'incorrect':''">имейл</label>
+            <input id="name" name="name" type="email" [(ngModel)]="form.email">
+        </div>
+        
+        <div class="position-relative">
+            <label for="password" [ngClass]="incorrect_password ? 'incorrect':''">Парола</label>
+            <input id="password" name="password" [type]="show_password? 'text':'password'" [(ngModel)]="form.password">
+
+            <img [src]="show_password? '/assets/icons/show-password.svg':'/assets/icons/not-show-password.svg'" alt="" style="width: 27px;" (click)="show_password = !show_password">
+        </div>
+        
+        <input class="primary-button" type="button" value="Вход" (click)="submit_login()">
+
+        <div class="d-flex more-options">
+            <a class="pointer" routerLink="/auth/register">Създай профил</a>
+            <a class="pointer" routerLink="/auth/forgotten-password">Забравена парола?</a>
+        </div>
+    </form>
+</div>

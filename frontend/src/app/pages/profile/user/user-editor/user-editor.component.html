@@ -1,0 +1,42 @@
+<div id="account_container">
+    <div>
+        <p class="my_account">Редакторски акаунт</p>
+
+        <div class="details">
+            <a routerLink="/profile/user/personal_info" [ngClass]="{'selected_tab': selected_tab === 'personal_info'}">
+                <img src="/assets/icons/profile.svg" alt="" style="width: 30px;">
+                <p>моите данни</p>
+            </a>
+
+            нов продукт
+            <br>View products
+            <br>New category
+            <br>View categories
+            <br>New custom product
+            <br>View custom products
+            <br>New store location
+            <br>View store locations
+            <br>View store info
+
+            <a routerLink="/profile/user/new_store_info" [ngClass]="{'selected_tab': selected_tab === 'new_store_info'}">
+                <img src="/assets/icons/add-paperwork.svg" alt="" style="width: 30px;">
+                <p>нова информация за магазина</p>
+            </a>
+
+            <a routerLink="/profile/user/view_store_info" [ngClass]="{'selected_tab': selected_tab === 'view_store_info'}">
+                <img src="/assets/icons/paperwork.svg" alt="" style="width: 30px;">
+                <p>информация за магазина</p>
+            </a>
+
+            <a (click)="logout()">
+                <img src="/assets/icons/exit.svg" alt="" style="width: 30px;">
+                <p>изход</p>
+            </a>
+        </div>
+    </div>
+    <div>
+        <app-user-personal-info *ngIf="selected_tab === 'personal_info'"></app-user-personal-info>
+        <app-editor-new-store-info *ngIf="selected_tab === 'new_store_info'"></app-editor-new-store-info>
+        <app-editor-view-store-info *ngIf="selected_tab === 'view_store_info'"></app-editor-view-store-info>
+    </div>
+</div>

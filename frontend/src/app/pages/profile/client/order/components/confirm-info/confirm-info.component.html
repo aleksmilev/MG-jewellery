@@ -1,0 +1,32 @@
+<div *ngIf="visible">
+    <div [ngClass]="incorrect_inputs.length !== 0? 'd-flex flex-column my-2':'d-none'">
+        <span class="incorrect w-100 mb-2" *ngFor="let incorrect_input of incorrect_inputs">{{ incorrect_input }}</span>
+    </div>
+
+    <div class="city_inputs">
+        <div>
+            <label for="city" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Град</label>
+            <input id="city" name="city" type="text" [(ngModel)]="address.city">
+        </div>
+    
+        <div>
+            <label for="postcode" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Postcode</label>
+            <input id="postcode" name="postcode" type="tel" [(ngModel)]="address.postcode" (keydown)="allowOnlyNumbers($event)">
+        </div>
+    </div>
+    
+    <div class="w-400">
+        <label for="street_name" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Квартал/Улица</label>
+        <input id="street_name" name="street_name" type="text" [(ngModel)]="address.street_name">
+    </div>
+    
+    <div class="w-400">
+        <label for="apartment" [ngClass]="incorrect_inputs.length !== 0 ? 'incorrect':''">Къща/апартамент №</label>
+        <input id="apartment" name="apartment" type="text" [(ngModel)]="address.apartment">
+    </div>
+    
+    <div class="w-800">
+        <label for="details">Допълнителна инфомация</label>
+        <textarea name="details" id="details" rows="10" [(ngModel)]="address.details"></textarea>
+    </div>
+</div>

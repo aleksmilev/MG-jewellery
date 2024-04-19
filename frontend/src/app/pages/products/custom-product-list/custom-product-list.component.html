@@ -1,0 +1,62 @@
+<h1 class="title">Продукти по поръчка</h1>
+<div class="d-flex flex-column justify-content-between product_list_conteiner">
+    <div>
+        <div id="filter_container" class="d-flex align-items-center justify-content-between">
+            <p> {{ ($product_list | async)?.length }} продукти</p>
+            <div class="d-flex" style="gap: 2em;">
+                <div class="dropdown_conteiner">
+                    <p class="pointer text-md text-light-color text-decoration-none">
+                        Продукти за
+                        <img src="assets/icons/dropdown.svg" alt="" style="width: 20px;"> 
+                    </p>
+                    <div class="dropdown pt-1 pb-2 px-3 d-flex flex-column gap-1">
+                        <button class="pointer" (click)="set_gender(4)">Всички</button>
+                        <button class="pointer" (click)="set_gender(1)">Мъже</button>
+                        <button class="pointer" (click)="set_gender(2)">Жени</button>
+                        <button class="pointer" (click)="set_gender(3)">Unisex</button>
+                    </div>
+                </div>
+                <div class="dropdown_conteiner">
+                    <p class="pointer text-capitalize text-md text-light-color text-decoration-none">
+                        Цена 
+                        <img src="assets/icons/dropdown.svg" alt="" style="width: 20px;"> 
+                    </p>
+                    <div class="dropdown pt-1 pb-2 px-3 d-flex flex-column gap-1" style="width: auto; right: 0px; left: auto;">
+                        <div class="d-flex justify-content-between align-items-center gap-2 price_filter mt-3">
+                            <div class="d-flex align-items-center border rounded p-2">
+                                <input type="number" name="to_price" id="to_price" placeholder="20" (keydown)="allowOnlyNumbers($event)" [(ngModel)]="price_range.from">
+                                <p class="p-0" style="margin-bottom: -4px;">BGN</p>
+                            </div>
+                            -
+                            <div class="d-flex align-items-center border rounded p-2">
+                                <input type="number" name="to_price" id="to_price" placeholder="220" (keydown)="allowOnlyNumbers($event)" [(ngModel)]="price_range.to">
+                                <p class="p-0" style="margin-bottom: -4px;">BGN</p>
+                            </div>
+                        </div>
+                        <button class="primary-button" (click)="save_price_range()">Запазване</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="product_conteiner">
+            <div *ngFor="let product of $product_list | async; let i = index;" [class]="is_product_visible(i)? 'pointer product' : 'd-none pointer product'">
+                <div *ngIf="is_product_visible(i)" [routerLink]="'/product/custom/' + product.id">
+                    <img [src]="'http://localhost/assets/custom_product' + product.cover_path" alt="">
+                    <p class="product_name">{{product.name}}</p>
+                    <p class="product_price">{{product.price}} BGN</p>
+                    <div class="product_view">VIEW</div>              
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center pt-3">
+        <div class="d-inline-flex gap-1 page-nav">
+            <button (click)="pravues_page()"><</button>
+            <button (click)="to_page(i)" *ngFor="let i of generate_range(($product_list | async)?.length);" [class]="i == page_number()?'this_page': ''">{{ i }}</button>
+            <button (click)="next_page()">></button>
+        </div>
+    </div>
+</div>
+

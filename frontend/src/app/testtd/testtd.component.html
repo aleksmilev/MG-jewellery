@@ -1,0 +1,5 @@
+<div #rendererContainer></div>
+
+<select name="" id="" *ngFor="let custom_part of custom_parts" (change)="set_custom_part($event, custom_part.name)">
+    <option [value]="layer.name" *ngFor="let layer of custom_part.config; let first = first" [selected]="first">{{ layer.name }}</option>
+</select>

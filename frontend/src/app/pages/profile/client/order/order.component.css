@@ -1,0 +1,26 @@
+#container{
+    width: 70vw;
+    margin: 30px auto;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.334;
+    letter-spacing: 0em;
+    margin: 0;
+}
+
+.order_container{
+    display: grid;
+    grid-template-columns: calc(65% - 1/2 * 2em) calc(35% - 1/2 * 2em);
+    gap: 2em;
+}
+
+.progress-bar{
+    background-color: hsla(210, 100%, 12%, 0.9)
+}
+
+.info{
+    height: 30vh;
+}
